@@ -1,0 +1,10 @@
+*.o
+*.axf
+*.map
+*.log
+*.tmp
+
+/build/
+/bin/
+/Debug/
+/Release/

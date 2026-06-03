@@ -1,0 +1,4 @@
+C:/Users/ragav/SimplicityStudio/v6_workspace/wifi_access_point_soc_2/cmake_gcc/build/CMakeFiles/slc.dir
+C:/Users/ragav/SimplicityStudio/v6_workspace/wifi_access_point_soc_2/cmake_gcc/build/CMakeFiles/wifi_access_point_soc_2.dir
+C:/Users/ragav/SimplicityStudio/v6_workspace/wifi_access_point_soc_2/cmake_gcc/build/CMakeFiles/edit_cache.dir
+C:/Users/ragav/SimplicityStudio/v6_workspace/wifi_access_point_soc_2/cmake_gcc/build/CMakeFiles/rebuild_cache.dir

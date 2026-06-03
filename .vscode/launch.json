@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "wifi_access_point_soc_2_silabs_debug:default_config",
+            "cwd": "${workspaceFolder}",
+            "type": "cortex-debug",
+            "request": "launch",
+            "serverpath": "C:\\Users\\ragav\\.silabs\\slt\\installs\\archive\\exx32-v6.0.29\\JLinkGDBServerCL.exe",
+            "servertype": "jlink",
+            "gdbPath": "C:\\Users\\ragav\\.silabs\\slt\\installs\\archive\\exx32-v6.0.29\\arm-none-eabi-gdb.exe",
+            "device": "SiWG917M111MGTBA",
+            "svdFile": "C:\\Users\\ragav\\AppData\\Local\\Temp\\silabs_extension\\silabs_extension\\svd\\SIWG917M111MGTBA.svd",
+            "runToEntryPoint": "main",
+            "rtos": "FreeRTOS",
+            "showDevDebugOutput": "raw",
+            "executable": "c:/Users/ragav/SimplicityStudio/v6_workspace/wifi_access_point_soc_2/cmake_gcc/build/base/wifi_access_point_soc_2.out",
+            "preLaunchTask": "wifi_access_point_soc_2_silabs_debug:default_config_combined",
+            "serialNumber": "446000597"
+        }
+    ]
+}

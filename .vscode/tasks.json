@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "wifi_access_point_soc_2_silabs_debug:default_config_setup",
+            "type": "shell",
+            "command": "C:/Users/ragav/.silabs/slt/installs/conan/p/cmakefa35ab0687064/p/bin/cmake.exe --preset project",
+            "options": {
+                "cwd": "c:/Users/ragav/SimplicityStudio/v6_workspace/wifi_access_point_soc_2/cmake_gcc"
+            }
+        },
+        {
+            "label": "wifi_access_point_soc_2_silabs_debug:default_config_build",
+            "type": "shell",
+            "command": "C:/Users/ragav/.silabs/slt/installs/conan/p/cmakefa35ab0687064/p/bin/cmake.exe --build --preset default_config",
+            "options": {
+                "cwd": "c:/Users/ragav/SimplicityStudio/v6_workspace/wifi_access_point_soc_2/cmake_gcc"
+            }
+        },
+        {
+            "label": "wifi_access_point_soc_2_silabs_debug:default_config_flash",
+            "type": "shell",
+            "command": "C:/Users/ragav/.silabs/slt/installs/archive/Simplicity Commander/commander.exe",
+            "args": [
+                "flash",
+                "c:/Users/ragav/SimplicityStudio/v6_workspace/wifi_access_point_soc_2/cmake_gcc/build/base/wifi_access_point_soc_2.rps",
+                "--halt",
+                "--serialno",
+                "446000597",
+                "--device",
+                "SIWG917M111MGTBA"
+            ]
+        },
+        {
+            "label": "wifi_access_point_soc_2_silabs_debug:default_config_combined",
+            "dependsOrder": "sequence",
+            "presentation": {
+                "reveal": "never"
+            },
+            "dependsOn": [
+                "wifi_access_point_soc_2_silabs_debug:default_config_setup",
+                "wifi_access_point_soc_2_silabs_debug:default_config_build",
+                "wifi_access_point_soc_2_silabs_debug:default_config_flash"
+            ]
+        }
+    ]
+}

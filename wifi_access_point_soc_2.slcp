@@ -1,0 +1,93 @@
+# Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
+project_name: wifi_access_point_soc_2
+label: wifi_access_point_soc_2
+description: |
+  Start a Wi-Fi Access Point with WPA2 security
+category: Example|Wi-Fi
+filter:
+- name: Project Difficulty
+  value:
+  - Beginner
+- name: Wireless Technology
+  value:
+  - Wi-Fi
+package: wifi_app
+quality: production
+readme:
+- path: readme.md
+source:
+- path: app.c
+include:
+- path: .
+  file_list:
+  - path: app.h
+sdk:
+  vendor: silabs
+  id: simplicity_sdk
+  version: 2025.12.3
+toolchain_settings:
+- value: -Wall -Werror
+  option: gcc_compiler_option
+component:
+- package: simplicity_sdk
+  vendor: silabs
+  id: freertos
+- package: simplicity_sdk
+  vendor: silabs
+  id: freertos_heap_4
+- package: simplicity_sdk
+  vendor: silabs
+  id: sl_main
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: SIWG917M111MGTBA
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: basic_network_config_manager
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: brd2605a
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: network_manager
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: si91x_memory_default_config
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sl_si91x_internal_stack
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sl_si91x_mem_pool_buffers_with_quota
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: syscalls
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: wifi
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: wifi_resources
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: wiseconnect_common
+other_file:
+- path: resources/readme/access_point_output.png
+- path: resources/readme/setup_soc_ncp.png
+define:
+- name: SL_SI91X_PRINT_DBG_LOG
+configuration:
+- name: SL_BOARD_ENABLE_VCOM
+  value: '1'
+ui_hints:
+  highlight:
+  - path: readme.md
+    focus: true
+sdk_extension:
+- vendor: silabs
+  id: wiseconnect3_sdk
+  version: 4.0.2
+post_build:
+- path: wifi_access_point_soc_2.slpb
+  profile: wiseconnect_soc
+
