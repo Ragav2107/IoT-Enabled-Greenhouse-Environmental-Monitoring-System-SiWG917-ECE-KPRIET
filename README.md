@@ -1,106 +1,389 @@
-# IoT-Enabled Patient Vital Signs Monitoring with Emergency Alerts
+# IoT Enabled Greenhouse Environmental Monitoring System with Integrated Wireless Gateway using Silicon Labs SiWG917
 
-## Project Overview
+## Silicon Labs Centre of Innovation in IoT Project
 
-This system continuously monitors critical patient health parameters including:
+### Team Information
 
-* Heart Rate & SpO2 (using **MAX30102**)
-* Body Temperature (using **MLX90614** contactless sensor)
-* Fall/Movement Detection (using **MPU6050** accelerometer/gyroscope)
+**Institution:** KPR Institute of Engineering and Technology, Coimbatore, Tamil Nadu, India
 
-All readings are processed by the **Silicon Labs BRD2605A Rev A02** microcontroller board. Data can be transmitted wirelessly via Bluetooth Low Energy (BLE) to a smartphone or monitoring dashboard. Emergency alerts are triggered automatically if abnormal health conditions are detected.
+**Department:** Electronics and Communication Engineering
 
----
-
-## Hardware Components
-
-| Component                                |  Description                                                                    |
-| ---------------------------------------- |  ------------------------------------------------------------------------------ |
-| **BRD2605A Rev A02 (SiLabs MCU Board)**  |  Main microcontroller that processes sensor data and handles BLE communication. |
-| **MAX30102 Heart Rate & SpO₂ Sensor**    |  Measures pulse rate and oxygen saturation using optical method.                |
-| **MLX90614 Temperature Sensor**          |  Measures body/skin temperature with physical contact.                       |
-| **MPU6050 6-axis Motion Sensor**         |  Detects patient falls or abnormal movements using accelerometer & gyroscope.   |
-
+**Program:** Silicon Labs Centre of Innovation (COI) in IoT
 
 ---
 
-## System Block Diagram
+# Abstract
 
-**Flow:**
-Sensors → Microcontroller (BRD2605A) → BLE Communication → Mobile/Cloud App → Emergency Alerts
+Greenhouse farming requires continuous monitoring of environmental conditions to ensure healthy plant growth and maximize crop yield. Traditional monitoring systems often depend on cloud platforms, internet connectivity, and expensive infrastructure.
 
----
+This project presents an IoT Enabled Greenhouse Environmental Monitoring System using the Silicon Labs SiWG917 Wireless MCU. The system continuously monitors critical environmental parameters including temperature, humidity, and ambient light intensity using the onboard sensors available in the SiWG917 development kit.
 
-## Features
+The SiWG917 processes the collected sensor data locally and operates as a standalone Wi-Fi Access Point while hosting an embedded HTTP web server. Users can connect directly to the device through Wi-Fi and access a real-time environmental monitoring dashboard using any standard web browser without requiring cloud services, mobile applications, databases, or external gateways.
 
-* ✅ Real-time vital sign monitoring
-* 📡 Wireless BLE data transmission
-* 🚨 Automatic emergency alerts for abnormal readings
-* 🔥 Fall detection for elderly or critical care patients
-* 🏥 Suitable for home-care and hospital monitoring environments
+The system further analyzes environmental conditions and provides intelligent recommendations to improve greenhouse quality. Historical sensor readings can also be downloaded in CSV format for analysis and record keeping.
+
+The proposed solution offers a low-cost, lightweight, portable, and easy-to-deploy smart greenhouse monitoring platform suitable for agriculture, research, educational, and IoT applications.
 
 ---
 
-## Pin Connections
+# Problem Statement
 
-### MAX30102 (I2C)
+Greenhouse environments require continuous monitoring to maintain optimal growing conditions. Existing solutions often face challenges such as:
 
-* SDA → MCU SDA
-* SCL → MCU SCL
-* VIN → 3.3V
-* GND → GND
+* Dependence on internet connectivity
+* Cloud subscription costs
+* Complex deployment and maintenance
+* Limited portability
+* High implementation costs
 
-### MLX90614 (I2C)
-
-* SDA → MCU SDA
-* SCL → MCU SCL
-* VCC → 3.3V
-* GND → GND
-
-### MPU6050 (I2C)
-
-* SDA → MCU SDA (shared bus)
-* SCL → MCU SCL (shared bus)
-* VCC → 3.3V
-* GND → GND
-
-> All sensors share the same **I2C bus**, which makes wiring simpler.
+There is a need for a lightweight standalone monitoring solution capable of providing real-time environmental insights and recommendations without relying on cloud infrastructure.
 
 ---
 
-## Software Tools
+# Project Objectives
 
-| Tool                                  | Purpose                          |
-| ------------------------------------- | -------------------------------- |
-| **Simplicity Studio (Silicon Labs)**  | Main firmware development IDE    |
-| **Gecko SDK**                         | Hardware abstraction & BLE Stack |
-| **Mobile App / Dashboard (Optional)** | Display patient health data      |
+The objectives of this project are:
 
----
-
-## Working Principle
-
-1. Sensors continuously collect patient health parameters.
-2. Microcontroller reads sensor data via I2C protocol.
-3. Data is processed & evaluated for safety thresholds.
-4. BLE transmits data to mobile dashboard.
-5. If dangerous conditions are detected → alert is triggered.
-
----
-
-## Example Use Cases
-
-* Elderly care monitoring
-* Post-surgery patient observation
-* Remote home health monitoring
-* Emergency response support
+* Monitor greenhouse temperature
+* Monitor relative humidity
+* Monitor ambient light intensity
+* Analyze environmental conditions locally
+* Generate environment status reports
+* Provide recommendations for environmental improvement
+* Configure Silicon Labs SiWG917 as a Wi-Fi Access Point
+* Host a lightweight embedded web server
+* Display environmental information through a browser dashboard
+* Enable CSV data download for analysis
+* Eliminate dependency on cloud services
+* Minimize power consumption and memory usage
 
 ---
 
-## Future Enhancements
+# System Overview
 
-* Cloud data logging (Firebase / AWS IoT)
-* Multi-patient monitoring dashboard
-* AI-based health risk prediction
-* GPS tracking when emergency occurs
+The Silicon Labs SiWG917 serves as the central controller of the system.
 
+The device performs four major functions:
+
+1. Environmental Data Acquisition
+2. Data Processing and Analysis
+3. Recommendation Generation
+4. Wireless Gateway and Web Server Operation
+
+The collected environmental data is displayed on a local web dashboard accessible through Wi-Fi.
+
+---
+
+# Key Features
+
+* Real-time environmental monitoring
+* Temperature sensing
+* Humidity sensing
+* Ambient light sensing
+* Environmental quality analysis
+* Automated recommendations
+* Local Wi-Fi Access Point mode
+* Embedded HTTP web server
+* Browser-based dashboard
+* CSV report download
+* Lightweight firmware architecture
+* No cloud dependency
+* No MQTT dependency
+* No database requirement
+* Low-cost implementation
+* Easy deployment
+
+---
+
+# Hardware Components
+
+| Component                    | Purpose                              |
+| ---------------------------- | ------------------------------------ |
+| Silicon Labs SiWG917 Dev Kit | Main Controller and Wireless Gateway |
+| Onboard Temperature Sensor   | Temperature Monitoring               |
+| Onboard Humidity Sensor      | Humidity Monitoring                  |
+| Onboard Light Sensor         | Ambient Light Monitoring             |
+| USB Power Supply             | System Power                         |
+
+---
+
+# Software Tools
+
+| Software            | Purpose                 |
+| ------------------- | ----------------------- |
+| Simplicity Studio 6 | Development Environment |
+| WiSeConnect SDK     | Wireless Stack          |
+| Embedded C          | Firmware Development    |
+| GitHub              | Version Control         |
+| Web Browser         | Dashboard Access        |
+
+---
+
+# System Architecture
+
+```text
++---------------------------+
+| Temperature Sensor        |
++-------------+-------------+
+              |
++-------------v-------------+
+| Humidity Sensor           |
++-------------+-------------+
+              |
++-------------v-------------+
+| Light Sensor              |
++-------------+-------------+
+              |
+              v
+
++---------------------------+
+|   Silicon Labs SiWG917    |
+|                           |
+| - Data Acquisition        |
+| - Data Analysis           |
+| - Recommendation Engine   |
+| - Wi-Fi Access Point      |
+| - HTTP Web Server         |
+| - CSV Data Logger         |
++-------------+-------------+
+              |
+              | Wi-Fi AP
+              |
+      +-------+-------+
+      |               |
++-----v-----+ +-------v----+
+| Smartphone| |   Laptop   |
++-----------+ +------------+
+              |
+              v
+      Web Dashboard
+```
+
+---
+
+# Hardware Block Diagram
+
+```text
+Temperature Sensor
+        |
+Humidity Sensor
+        |
+Light Sensor
+        |
+        v
+
++-------------------+
+|   SiWG917 MCU     |
++-------------------+
+        |
+        |
+        +----------------------+
+                               |
+                         Wi-Fi AP Mode
+                               |
+            +------------------+------------------+
+            |                                     |
+         Mobile                               Laptop
+            |                                     |
+            +----------- Dashboard ---------------+
+```
+
+---
+
+# Data Flow Diagram
+
+```text
+Temperature
+      +
+Humidity
+      +
+Light
+      |
+      v
+
+Data Acquisition
+      |
+      v
+
+Data Processing
+      |
+      v
+
+Environment Analysis
+      |
+      v
+
+Recommendation Engine
+      |
+      v
+
+JSON Generation
+      |
+      v
+
+HTTP Server
+      |
+      v
+
+Web Dashboard
+```
+
+---
+
+# Working Principle
+
+1. The onboard sensors continuously collect environmental data.
+2. SiWG917 reads temperature, humidity, and light intensity values.
+3. Sensor readings are processed locally.
+4. Environmental conditions are analyzed against predefined thresholds.
+5. The system determines the current greenhouse status.
+6. Recommendations are generated to improve environmental quality.
+7. Sensor data is logged periodically.
+8. CSV files are generated for historical data storage.
+9. SiWG917 operates as a Wi-Fi Access Point.
+10. Users connect directly to the device through Wi-Fi.
+11. Embedded HTTP server provides dashboard pages.
+12. Browser periodically requests updated sensor information.
+13. Dashboard displays live environmental status and recommendations.
+
+---
+
+# Wi-Fi Configuration
+
+SSID:
+SiWG917
+
+Password:
+12345678
+
+Default IP:
+192.168.10.11
+
+---
+
+# Dashboard Interface
+
+```text
+-------------------------------------------
+Greenhouse Monitoring Dashboard
+-------------------------------------------
+
+Temperature : 29.5 °C
+
+Humidity    : 62 %
+
+Light Level : 740 Lux
+
+Status      : Optimal
+
+Recommendation:
+Maintain current environmental conditions.
+
+Last Update : 10:15:22
+
+[ Download CSV ]
+
+-------------------------------------------
+```
+
+---
+
+# Example JSON Response
+
+```json
+{
+  "temperature": 29.5,
+  "humidity": 62,
+  "light": 740,
+  "status": "Optimal",
+  "recommendation": "Maintain current environmental conditions."
+}
+```
+
+---
+
+# Environmental Analysis Logic
+
+| Parameter   | Condition | Status                          |
+| ----------- | --------- | ------------------------------- |
+| Temperature | Too High  | Ventilation Required            |
+| Temperature | Too Low   | Increase Heating                |
+| Humidity    | Too High  | Reduce Moisture                 |
+| Humidity    | Too Low   | Increase Irrigation             |
+| Light       | Too Low   | Additional Lighting Recommended |
+| Light       | Too High  | Provide Shade                   |
+
+---
+
+# Example Recommendations
+
+* Increase greenhouse ventilation.
+* Reduce humidity levels.
+* Increase irrigation frequency.
+* Activate supplemental lighting.
+* Deploy shading mechanisms.
+* Maintain current environmental conditions.
+
+---
+
+# CSV Data Logging
+
+The system periodically stores environmental data and allows users to download logs in CSV format.
+
+Example:
+
+```csv
+Timestamp,Temperature,Humidity,Light,Status
+10:00:00,29.1,61,735,Optimal
+10:05:00,29.4,62,742,Optimal
+10:10:00,29.5,62,740,Optimal
+```
+
+---
+
+---
+
+# Results
+
+The system successfully:
+
+* Acquired environmental parameters
+* Processed sensor data locally
+* Analyzed greenhouse conditions
+* Generated improvement recommendations
+* Hosted an embedded web server
+* Operated as a standalone Wi-Fi Access Point
+* Displayed real-time environmental information
+* Generated downloadable CSV reports
+* Eliminated cloud dependency
+
+---
+
+# Applications
+
+* Smart Greenhouses
+* Precision Agriculture
+* Indoor Farming
+* Hydroponic Systems
+* Agricultural Research Centers
+* Educational IoT Laboratories
+* Environmental Monitoring Systems
+
+---
+
+# Advantages
+
+* Low Cost
+* Portable
+* Easy Deployment
+* Cloud Independent
+* Low Power Consumption
+* Real-Time Monitoring
+* CSV Data Export
+* Intelligent Recommendations
+* Scalable Architecture
+* Beginner Friendly
+
+---
+
+tunities that enabled the successful development of this Greenhouse Environmental Monitoring System.
