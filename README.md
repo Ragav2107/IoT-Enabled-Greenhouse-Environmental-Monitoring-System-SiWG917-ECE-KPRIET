@@ -1,4 +1,4 @@
-# IoT Enabled Greenhouse Environmental Monitoring System with Integrated Wireless Gateway using Silicon Labs SiWG917
+# IoT Enabled Greenhouse Environmental Monitoring System with Integrated Wireless Gateway using Silicon Labs SiWG917_ECE_KPRIET
 
 ## Silicon Labs Centre of Innovation in IoT Project
 
